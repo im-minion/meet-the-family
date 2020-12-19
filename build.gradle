@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'io.vaibhav'
+version '1.0-SNAPSHOT'
+jar {
+    baseName = 'geektrust'
+    manifest {
+        attributes 'Main-Class' : 'io.vaibhav.mtf.MeetTheFamily'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

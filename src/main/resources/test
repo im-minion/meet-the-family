@@ -1,0 +1,7 @@
+ADD_CHILD Meg Jackie Female
+ADD_CHILD Meg bera Female
+ADD_CHILD Meg tera Female
+ADD_CHILD Meg jora Female
+ADD_CHILD Meg mera Male
+GET_RELATIONSHIP Chitra Son
+GET_RELATIONSHIP Chitra Daughter
