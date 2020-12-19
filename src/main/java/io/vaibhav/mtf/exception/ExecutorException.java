@@ -7,7 +7,6 @@ public class ExecutorException extends RuntimeException {
         super(message, throwable);
     }
 
-
     public ExecutorException(Throwable throwable) {
         super(throwable);
     }

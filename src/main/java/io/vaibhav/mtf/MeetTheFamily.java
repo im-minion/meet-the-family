@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 
 public class MeetTheFamily {
     public static void main(String[] args) {
-        LinkedHashMap<String, Node> royalFamilyMembers =  PopulateFamily.populateFamily();
+        LinkedHashMap<String, Node> royalFamilyMembers = PopulateFamily.populateFamily();
         Family royalFamily = new Family(royalFamilyMembers);
         Executor royalFamilyExecutor = new Executor(royalFamily);
         final InputParser inputParser = new InputParser(royalFamilyExecutor);

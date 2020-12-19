@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 
 public class PopulateFamily {
     public static LinkedHashMap<String, Node> populateFamily() {
-        LinkedHashMap<String, Node> familyNodes =  new LinkedHashMap<>();
+        LinkedHashMap<String, Node> familyNodes = new LinkedHashMap<>();
 
         Node shan = new Node("King Shan", Gender.MALE);
         Node anga = new Node("Queen Anga", Gender.FEMALE);

@@ -3,11 +3,11 @@ plugins {
 }
 
 group 'io.vaibhav'
-version '1.0-SNAPSHOT'
+
 jar {
     baseName = 'geektrust'
     manifest {
-        attributes 'Main-Class' : 'io.vaibhav.mtf.MeetTheFamily'
+        attributes 'Main-Class': 'io.vaibhav.mtf.MeetTheFamily'
     }
 }
 repositories {
