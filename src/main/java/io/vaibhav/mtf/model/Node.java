@@ -63,8 +63,9 @@ public class Node {
         return spouse;
     }
 
-    public void setSpouse(Node spouse) {
-        this.spouse = spouse;
+    public void setSpouse(Node node) {
+        this.spouse = node;
+        node.spouse = this;
     }
 
     public LinkedHashSet<Node> getChildren() {

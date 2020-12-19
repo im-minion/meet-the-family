@@ -110,7 +110,7 @@ public class Executor implements IExecutor {
     private void getSiblingsWithGender(Node node, StringBuilder result, String name, Gender g) {
         node.getMother().getChildren()
                 .forEach(sib -> {
-                    if (!name.equals(sib.getName()) && sib.getGender() == g) {
+                    if (!node.getName().equals(sib.getName()) && sib.getGender() == g) {
                         result.append(sib.getName()).append(" ");
                     }
                 });

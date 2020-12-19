@@ -1,8 +1,2 @@
-ADD_CHILD Meg Jackie Female
-ADD_CHILD Meg BARKI Female
-ADD_CHILD Meg BARKA Male
-ADD_CHILD Meg PORGA Male
-ADD_CHILD Meg PORGI Female
-
-GET_RELATIONSHIP Meg Son
-GET_RELATIONSHIP Meg Daughter
+GET_RELATIONSHIP Vritha Paternal-Uncle
+GET_RELATIONSHIP Vritha Paternal-Aunt

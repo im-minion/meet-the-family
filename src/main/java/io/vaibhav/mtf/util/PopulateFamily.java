@@ -41,7 +41,7 @@ public class PopulateFamily {
         Node kriya = new Node("Kriya", Gender.MALE);
         Node krithi = new Node("Krithi", Gender.FEMALE);
 //        vaib
-        Node meg = new Node("Meg", Gender.MALE);
+        Node meg = new Node("Meg", Gender.FEMALE);
 
         familyNodes.put("King Shan", shan);
         familyNodes.put("Queen Anga", anga);

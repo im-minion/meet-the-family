@@ -1,7 +1,2 @@
-ADD_CHILD Chitra Aria Female
-ADD_CHILD Chitra bera Female
-ADD_CHILD Chitra tera Female
-ADD_CHILD Chitra jora Female
-ADD_CHILD Chitra mera Male
-GET_RELATIONSHIP Chitra Son
-GET_RELATIONSHIP Chitra Daughter
+GET_RELATIONSHIP Vritha Paternal-Uncle
+GET_RELATIONSHIP Vritha Paternal-Aunt
