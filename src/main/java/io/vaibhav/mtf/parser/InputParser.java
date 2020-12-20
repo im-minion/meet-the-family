@@ -9,7 +9,7 @@ import static io.vaibhav.mtf.constants.Constants.ADD_CHILD;
 import static io.vaibhav.mtf.constants.Constants.GET_RELATION;
 
 public class InputParser {
-    private final IExecutor executor;// = new Executor();
+    private final IExecutor executor;
 
     public InputParser(IExecutor executor) {
         this.executor = executor;
