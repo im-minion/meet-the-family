@@ -1,3 +1,5 @@
+ADD_CHILD Chitra Kurta
+ADD_CHILD Dummay Kurta
 GET_RELATIONSHIP Vritha Paternal-Uncle
 GET_RELATIONSHIP Vritha Paternal-Aunt
 GET_RELATIONSHIP Vyas Maternal-Uncle

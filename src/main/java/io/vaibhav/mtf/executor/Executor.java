@@ -22,7 +22,10 @@ public class Executor implements IExecutor {
         Node motherNode = this.family.getFamilyMembers().get(motherName);
 
         if (null == motherNode) {
-            throw new ExecutorException(Constants.PERSON_NOT_FOUND, new RuntimeException());
+            System.out.println(Constants.PERSON_NOT_FOUND);
+            return;
+            // Ideally should throw exception but as per the requirement just logging it
+            // throw new ExecutorException(Constants.PERSON_NOT_FOUND, new RuntimeException());
         }
         Node nodeToAdd = new Node(name, gender);
         motherNode.addChild(nodeToAdd);
