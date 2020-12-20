@@ -9,8 +9,8 @@ public class PopulateFamily {
     public static LinkedHashMap<String, Node> populateFamily() {
         LinkedHashMap<String, Node> familyNodes = new LinkedHashMap<>();
 
-        Node shan = new Node("King Shan", Gender.MALE);
-        Node anga = new Node("Queen Anga", Gender.FEMALE);
+        Node shan = new Node("KingShan", Gender.MALE);
+        Node anga = new Node("QueenAnga", Gender.FEMALE);
         Node chit = new Node("Chit", Gender.MALE);
         Node ish = new Node("Ish", Gender.MALE);
         Node vich = new Node("Vich", Gender.MALE);
@@ -43,8 +43,8 @@ public class PopulateFamily {
 //        vaib
         Node meg = new Node("Meg", Gender.FEMALE);
 
-        familyNodes.put("King Shan", shan);
-        familyNodes.put("Queen Anga", anga);
+        familyNodes.put("KingShan", shan);
+        familyNodes.put("QueenAnga", anga);
         familyNodes.put("Chit", chit);
         familyNodes.put("Ish", ish);
         familyNodes.put("Vich", vich);

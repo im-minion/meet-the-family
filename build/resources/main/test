@@ -1,2 +1,8 @@
 GET_RELATIONSHIP Vritha Paternal-Uncle
 GET_RELATIONSHIP Vritha Paternal-Aunt
+GET_RELATIONSHIP Vyas Maternal-Uncle
+GET_RELATIONSHIP Vyas Maternal-Aunt
+GET_RELATIONSHIP Jaya Sister-In-Law
+GET_RELATIONSHIP Jaya Brother-In-Law
+GET_RELATIONSHIP KingShan Son
+GET_RELATIONSHIP KingShan Daughter

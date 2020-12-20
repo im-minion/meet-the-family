@@ -33,10 +33,15 @@ public class Executor implements IExecutor {
     @Override
     public void getRelation(String name, String relation) {
         try {
-            if (null == this.currentFamilyMembers || null == this.currentFamilyMembers.get(name)) {
-                throw new ExecutorException(String.format("No Family Member Exists with name %s.", name), new RuntimeException());
-            }
             StringBuilder result = new StringBuilder();
+            if (null == this.currentFamilyMembers || null == this.currentFamilyMembers.get(name)) {
+                result.append(Constants.PERSON_NOT_FOUND);
+                System.out.println(result.toString().trim());
+                return;
+//                Ideally should throw exception but as per the requirement just log
+//                throw new ExecutorException(String.format("No Family Member Exists with name %s.", name), new RuntimeException());
+            }
+
             switch (relation) {
                 case Constants.SON:
                     getChild(result, name, Gender.MALE);
@@ -90,21 +95,19 @@ public class Executor implements IExecutor {
     private void getSiblingsWives(StringBuilder result, String name) {
         this.currentFamilyMembers.get(name).getMother().getChildren().
                 forEach(sib -> {
-                            if (!name.equals(sib.getName()) && sib.getGender() == Gender.MALE) {
-                                result.append(sib.getSpouse()).append(" ");
-                            }
-                        }
-                );
+                    if (!name.equals(sib.getName()) && sib.getGender() == Gender.MALE) {
+                        result.append(sib.getSpouse()).append(" ");
+                    }
+                });
     }
 
     private void getSiblingsHusbands(StringBuilder result, String name) {
         this.currentFamilyMembers.get(name).getMother().getChildren().
                 forEach(sib -> {
-                            if (!name.equals(sib.getName()) && sib.getGender() == Gender.FEMALE) {
-                                result.append(sib.getSpouse()).append(" ");
-                            }
-                        }
-                );
+                    if (!name.equals(sib.getName()) && sib.getGender() == Gender.FEMALE) {
+                        result.append(sib.getSpouse()).append(" ");
+                    }
+                });
     }
 
     private void getSiblingsWithGender(Node node, StringBuilder result, String name, Gender g) {
