@@ -44,38 +44,38 @@ public class Executor implements IExecutor {
             } else {
                 switch (relation) {
                     case Constants.SON:
-                        getChild(result, name, Gender.MALE);
+                        getChildWithSpecificGender(result, name, Gender.MALE);
                         break;
                     case Constants.DAUGHTER:
-                        getChild(result, name, Gender.FEMALE);
+                        getChildWithSpecificGender(result, name, Gender.FEMALE);
                         break;
                     case Constants.SIBLINGS:
                         getSiblings(result, name);
                         break;
                     case Constants.PATERNAL_UNCLE: //Father’s brothers
                         Node fatherNode = this.currentFamilyMembers.get(name).getFather();
-                        getSiblingsWithGender(fatherNode, result, name, Gender.MALE);
+                        getSiblingsWithSpecificGender(fatherNode, result, name, Gender.MALE);
                         break;
                     case Constants.PATERNAL_AUNT: //Father’s sisters
                         Node fatherNode2 = this.currentFamilyMembers.get(name).getFather();
-                        getSiblingsWithGender(fatherNode2, result, name, Gender.FEMALE);
+                        getSiblingsWithSpecificGender(fatherNode2, result, name, Gender.FEMALE);
                         break;
                     case Constants.MATERNAL_UNCLE: //Mother’s brothers
                         Node motherNode = this.currentFamilyMembers.get(name).getMother();
-                        getSiblingsWithGender(motherNode, result, name, Gender.MALE);
+                        getSiblingsWithSpecificGender(motherNode, result, name, Gender.MALE);
                         break;
                     case Constants.MATERNAL_AUNT: //Mother’s sisters
                         Node motherNode2 = this.currentFamilyMembers.get(name).getMother();
-                        getSiblingsWithGender(motherNode2, result, name, Gender.FEMALE);
+                        getSiblingsWithSpecificGender(motherNode2, result, name, Gender.FEMALE);
                         break;
                     case Constants.SISTER_IN_LAW: //Spouse’s sisters,  Wives of siblings
                         Node spouseNode = this.currentFamilyMembers.get(name).getSpouse();
-                        getSiblingsWithGender(spouseNode, result, name, Gender.FEMALE);
+                        getSiblingsWithSpecificGender(spouseNode, result, name, Gender.FEMALE);
                         getSiblingsWives(result, name);
                         break;
                     case Constants.BROTHER_IN_LAW: //Spouse’s brothers,  Husbands of siblings
                         Node spouseNode2 = this.currentFamilyMembers.get(name).getSpouse();
-                        getSiblingsWithGender(spouseNode2, result, name, Gender.MALE);
+                        getSiblingsWithSpecificGender(spouseNode2, result, name, Gender.MALE);
                         getSiblingsHusbands(result, name);
                         break;
                     default:
@@ -111,7 +111,7 @@ public class Executor implements IExecutor {
                 });
     }
 
-    private void getSiblingsWithGender(Node node, StringBuilder result, String name, Gender g) {
+    private void getSiblingsWithSpecificGender(Node node, StringBuilder result, String name, Gender g) {
         node.getMother().getChildren()
                 .forEach(sib -> {
                     if (!node.getName().equals(sib.getName()) && sib.getGender() == g) {
@@ -129,7 +129,7 @@ public class Executor implements IExecutor {
                 });
     }
 
-    private void getChild(StringBuilder result, String name, Gender g) {
+    private void getChildWithSpecificGender(StringBuilder result, String name, Gender g) {
         this.currentFamilyMembers.get(name).getChildren().stream()
                 .filter(child -> child.getGender() == g)
                 .forEach(daughter -> result.append(daughter.getName()).append(" "));
