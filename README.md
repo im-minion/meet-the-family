@@ -1,12 +1,12 @@
 # meet-the-family
 
 
-#### Build using gradle
+#### Build using gradle(version used for development: Gradle 6.6.1)
 ```gradle clean build```
 
 #### Run
-Go to the root directory of the project, and run
+Go to the root directory of the project, execute following command
 
-```java -jar build/libs/geektrust.jar input_file_path```
+```java -jar build/libs/geektrust.jar <input_file_path>```
 
->Note: Here **input_file_path** is the path of test file. I have test file in *src/main/resources/test*
+> **<input_file_path>** is the path of test file which conains command. In this code base test file is at *src/main/resources/test*
