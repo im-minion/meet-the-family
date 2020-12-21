@@ -58,11 +58,15 @@ public class Executor implements IExecutor {
                         break;
                     case Constants.PATERNAL_UNCLE: //Father’s brothers
                         Node fatherNode = this.currentFamilyMembers.get(name).getFather();
-                        getSiblingsWithSpecificGender(fatherNode, result, name, Gender.MALE);
+                        if (isNodePresent(fatherNode)) {
+                            getSiblingsWithSpecificGender(fatherNode, result, name, Gender.MALE);
+                        }
                         break;
                     case Constants.PATERNAL_AUNT: //Father’s sisters
                         Node fatherNode2 = this.currentFamilyMembers.get(name).getFather();
-                        getSiblingsWithSpecificGender(fatherNode2, result, name, Gender.FEMALE);
+                        if (isNodePresent(fatherNode2)) {
+                            getSiblingsWithSpecificGender(fatherNode2, result, name, Gender.FEMALE);
+                        }
                         break;
                     case Constants.MATERNAL_UNCLE: //Mother’s brothers
                         Node motherNode = this.currentFamilyMembers.get(name).getMother();
@@ -74,14 +78,14 @@ public class Executor implements IExecutor {
                         break;
                     case Constants.SISTER_IN_LAW: //Spouse’s sisters,  Wives of siblings
                         Node spouseNode = this.currentFamilyMembers.get(name).getSpouse();
-                        if (!spouseNode.getName().equals(Constants.UNKNOWN)) {
+                        if (isNodePresent(spouseNode)) {
                             getSiblingsWithSpecificGender(spouseNode, result, name, Gender.FEMALE);
                         }
                         getSiblingsSpouseWithGender(result, name, Gender.MALE);
                         break;
                     case Constants.BROTHER_IN_LAW: //Spouse’s brothers,  Husbands of siblings
                         Node spouseNode2 = this.currentFamilyMembers.get(name).getSpouse();
-                        if (!spouseNode2.getName().equals(Constants.UNKNOWN)) {
+                        if (isNodePresent(spouseNode2)) {
                             getSiblingsWithSpecificGender(spouseNode2, result, name, Gender.MALE);
                         }
                         getSiblingsSpouseWithGender(result, name, Gender.FEMALE);
@@ -136,8 +140,8 @@ public class Executor implements IExecutor {
                 .forEach(daughter -> result.append(daughter.getName()).append(" "));
     }
 
-    private boolean isNodePresent(String name) {
-        return !name.equals(Constants.NONE) && !name.equals(Constants.PERSON_NOT_FOUND);
+    private boolean isNodePresent(Node node) {
+        return !Constants.UNKNOWN.equals(node.getName());
     }
 
 }
