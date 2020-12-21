@@ -27,6 +27,10 @@ public class Executor implements IExecutor {
             // Ideally should throw exception but as per the requirement just logging it
             // throw new ExecutorException(Constants.PERSON_NOT_FOUND, new RuntimeException());
         }
+        if (Gender.FEMALE != motherNode.getGender()) {
+            System.out.println(Constants.CHILD_NOT_ADDED);
+            return;
+        }
         Node nodeToAdd = new Node(name, gender);
         motherNode.addChild(nodeToAdd);
         this.family.getFamilyMembers().put(name, nodeToAdd);
@@ -70,13 +74,17 @@ public class Executor implements IExecutor {
                         break;
                     case Constants.SISTER_IN_LAW: //Spouse’s sisters,  Wives of siblings
                         Node spouseNode = this.currentFamilyMembers.get(name).getSpouse();
-                        getSiblingsWithSpecificGender(spouseNode, result, name, Gender.FEMALE);
-                        getSiblingsWives(result, name);
+                        if (!spouseNode.getName().equals(Constants.UNKNOWN)) {
+                            getSiblingsWithSpecificGender(spouseNode, result, name, Gender.FEMALE);
+                        }
+                        getSiblingsSpouseWithGender(result, name, Gender.MALE);
                         break;
                     case Constants.BROTHER_IN_LAW: //Spouse’s brothers,  Husbands of siblings
                         Node spouseNode2 = this.currentFamilyMembers.get(name).getSpouse();
-                        getSiblingsWithSpecificGender(spouseNode2, result, name, Gender.MALE);
-                        getSiblingsHusbands(result, name);
+                        if (!spouseNode2.getName().equals(Constants.UNKNOWN)) {
+                            getSiblingsWithSpecificGender(spouseNode2, result, name, Gender.MALE);
+                        }
+                        getSiblingsSpouseWithGender(result, name, Gender.FEMALE);
                         break;
                     default:
                         System.out.println("INVALID INPUT");
@@ -93,20 +101,13 @@ public class Executor implements IExecutor {
         }
     }
 
-    private void getSiblingsWives(StringBuilder result, String name) {
+    private void getSiblingsSpouseWithGender(StringBuilder result, String name, Gender g) {
         this.currentFamilyMembers.get(name).getMother().getChildren().
                 forEach(sib -> {
-                    if (!name.equals(sib.getName()) && sib.getGender() == Gender.MALE) {
-                        result.append(sib.getSpouse()).append(" ");
-                    }
-                });
-    }
-
-    private void getSiblingsHusbands(StringBuilder result, String name) {
-        this.currentFamilyMembers.get(name).getMother().getChildren().
-                forEach(sib -> {
-                    if (!name.equals(sib.getName()) && sib.getGender() == Gender.FEMALE) {
-                        result.append(sib.getSpouse()).append(" ");
+                    if (!name.equals(sib.getName())
+                            && sib.getGender() == g
+                            && !Constants.UNKNOWN.equals(sib.getSpouse().getName())) {
+                        result.append(sib.getSpouse().getName()).append(" ");
                     }
                 });
     }
@@ -134,4 +135,9 @@ public class Executor implements IExecutor {
                 .filter(child -> child.getGender() == g)
                 .forEach(daughter -> result.append(daughter.getName()).append(" "));
     }
+
+    private boolean isNodePresent(String name) {
+        return !name.equals(Constants.NONE) && !name.equals(Constants.PERSON_NOT_FOUND);
+    }
+
 }

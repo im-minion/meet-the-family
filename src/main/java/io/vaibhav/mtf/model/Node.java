@@ -7,7 +7,7 @@ import io.vaibhav.mtf.exception.ExecutorException;
 import java.util.LinkedHashSet;
 
 public class Node {
-    private static final Node unknown = new Node("Unknown");
+    private static final Node unknownNode = new Node(Constants.UNKNOWN);
     private String name;
     private Gender gender;
     private Node mother;
@@ -22,9 +22,9 @@ public class Node {
     public Node(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
-        this.mother = unknown;
-        this.father = unknown;
-        this.spouse = unknown;
+        this.mother = unknownNode;
+        this.father = unknownNode;
+        this.spouse = unknownNode;
     }
 
     public String getName() {
